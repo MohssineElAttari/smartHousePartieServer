@@ -1,0 +1,2 @@
+# smartHousePartieServer
+Smart House - [Backend]
