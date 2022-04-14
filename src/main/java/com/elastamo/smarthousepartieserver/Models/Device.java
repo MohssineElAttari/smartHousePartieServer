@@ -1,4 +1,4 @@
-package com.elastamo.smarthousepartieserver.models;
+package com.elastamo.smarthousepartieserver.Models;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -19,12 +19,13 @@ public class Device {
     private String name;
     private String number;
     private String status;
+    @DBRef
+    private Room room;
 
     public Device(String name,String number,String status){
         this.name=name;
         this.number=number;
         this.status=status;
     }
-    @DBRef
-    private Room room;
+
 }
