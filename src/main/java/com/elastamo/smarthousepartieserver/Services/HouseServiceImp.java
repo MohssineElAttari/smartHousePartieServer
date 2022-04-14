@@ -1,14 +1,14 @@
-package com.elastamo.smarthousepartieserver.services;
+package com.elastamo.smarthousepartieserver.Services;
 
-import com.elastamo.smarthousepartieserver.models.House;
-import com.elastamo.smarthousepartieserver.repository.HouseRepository;
+import com.elastamo.smarthousepartieserver.Models.House;
+import com.elastamo.smarthousepartieserver.Repository.HouseRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-public class HouseServiceImp implements HouseServiceInt{
+public class HouseServiceImp implements IHouseService {
 
     final private HouseRepository houseRepository;
     @Autowired

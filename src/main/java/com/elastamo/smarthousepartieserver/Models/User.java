@@ -1,4 +1,4 @@
-package com.elastamo.smarthousepartieserver.models;
+package com.elastamo.smarthousepartieserver.Models;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -7,7 +7,8 @@ import lombok.Setter;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document
+
+@Document(collection = "user_collection")
 @Getter
 @Setter
 @AllArgsConstructor
@@ -24,4 +25,12 @@ public class User {
         this.password=password;
     }
 
+    @Override
+    public String toString() {
+        return "User{" +
+                "id='" + id + '\'' +
+                ", userName='" + userName + '\'' +
+                ", password='" + password + '\'' +
+                '}';
+    }
 }

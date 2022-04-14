@@ -1,4 +1,4 @@
-package com.elastamo.smarthousepartieserver.models;
+package com.elastamo.smarthousepartieserver.Models;
 
 
 import lombok.*;

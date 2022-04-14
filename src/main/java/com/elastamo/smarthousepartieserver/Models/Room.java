@@ -1,4 +1,4 @@
-package com.elastamo.smarthousepartieserver.models;
+package com.elastamo.smarthousepartieserver.Models;
 
 import lombok.*;
 import org.springframework.data.annotation.Id;
@@ -8,19 +8,14 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Document
 @Getter
 @Setter
-@Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class Floor {
+@Builder
+public class Room {
     @Id
     private String id;
     private String name;
     private String number;
     @DBRef
-    private House house;
-
-    public Floor(String name,String number){
-        this.name=name;
-        this.number=number;
-    }
+    private Floor floor;
 }

@@ -1,10 +1,10 @@
-package com.elastamo.smarthousepartieserver.services;
+package com.elastamo.smarthousepartieserver.Services;
 
-import com.elastamo.smarthousepartieserver.models.House;
+import com.elastamo.smarthousepartieserver.Models.House;
 
 import java.util.List;
 
-public interface HouseServiceInt {
+public interface IHouseService {
     House addHouse(House house);
     List<House>getAll();
     String delete(House id);

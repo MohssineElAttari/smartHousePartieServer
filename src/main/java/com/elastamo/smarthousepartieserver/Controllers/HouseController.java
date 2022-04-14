@@ -1,8 +1,7 @@
-package com.elastamo.smarthousepartieserver.controllers;
+package com.elastamo.smarthousepartieserver.Controllers;
 
-import com.elastamo.smarthousepartieserver.models.House;
-import com.elastamo.smarthousepartieserver.repository.HouseRepository;
-import com.elastamo.smarthousepartieserver.services.HouseServiceImp;
+import com.elastamo.smarthousepartieserver.Models.House;
+import com.elastamo.smarthousepartieserver.Services.HouseServiceImp;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
