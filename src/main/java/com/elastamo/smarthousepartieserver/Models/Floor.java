@@ -19,8 +19,9 @@ public class Floor {
     @DBRef
     private House house;
 
-    public Floor(String name,String number){
+    public Floor(String name,String number,House house){
         this.name=name;
         this.number=number;
+        this.house=house;
     }
 }
