@@ -1,11 +1,10 @@
 package com.elastamo.smarthousepartieserver.Models;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
+
+import java.util.List;
 
 
 @Document(collection = "user_collection")
@@ -19,10 +18,13 @@ public class User {
     private String id;
     private String userName;
     private String password;
+    private List<House> houseList;
 
-    public User(String userName,String password){
+
+    public User(String userName,String password,House house){
         this.userName=userName;
         this.password=password;
+        this.houseList.add(house);
     }
 
     @Override
