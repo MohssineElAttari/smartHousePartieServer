@@ -10,7 +10,7 @@ import org.springframework.data.mongodb.core.mapping.Field;
 @Document(collection = "house_collection")
 @Getter
 @Setter
-
+@Builder
 @AllArgsConstructor
 @NoArgsConstructor
 public class House {
@@ -31,7 +31,8 @@ public class House {
                 '}';
     }
 
-    public House(String name) {
+    public House(String name,User user) {
         this.name = name;
+        this.user=user;
     }
 }
