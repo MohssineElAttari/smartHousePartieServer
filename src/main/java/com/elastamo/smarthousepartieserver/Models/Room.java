@@ -5,6 +5,8 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.util.Collection;
+
 @Document
 @Getter
 @Setter
@@ -14,8 +16,9 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class Room {
     @Id
     private String id;
-    private String name;
-    private String number;
+    private Long number;
     @DBRef
     private Floor floor;
+    @DBRef
+    private Collection<Device> devices;
 }
