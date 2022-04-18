@@ -5,6 +5,8 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.util.Collection;
+
 @Document
 @Getter
 @Setter
@@ -14,14 +16,10 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class Floor {
     @Id
     private String id;
-    private String name;
-    private String number;
+    private Long number;
+    @DBRef
+    private Collection<Room> rooms;
     @DBRef
     private House house;
 
-    public Floor(String name,String number,House house){
-        this.name=name;
-        this.number=number;
-        this.house=house;
-    }
 }
