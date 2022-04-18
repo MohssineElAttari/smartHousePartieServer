@@ -1,10 +1,7 @@
 package com.elastamo.smarthousepartieserver.Models;
 
 import com.elastamo.smarthousepartieserver.Enum.DeviceStatus;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -14,13 +11,13 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 public class Device {
     @Id
     private String id;
     private String name;
     private String number;
     private DeviceStatus status;
-
     @DBRef
     private Room room;
 
