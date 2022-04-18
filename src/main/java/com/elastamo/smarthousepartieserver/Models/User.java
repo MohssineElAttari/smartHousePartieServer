@@ -2,7 +2,9 @@ package com.elastamo.smarthousepartieserver.Models;
 
 import lombok.*;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.Field;
 
 import java.util.List;
 
@@ -16,23 +18,11 @@ public class User {
 
     @Id
     private String id;
-    private String userName;
+    @Field(value = "username")
+    private String username;
+    @Field(value = "password")
     private String password;
-    private List<House> houseList;
+    @DBRef
+    private House house;
 
-
-    public User(String userName,String password,House house){
-        this.userName=userName;
-        this.password=password;
-        this.houseList.add(house);
-    }
-
-    @Override
-    public String toString() {
-        return "User{" +
-                "id='" + id + '\'' +
-                ", userName='" + userName + '\'' +
-                ", password='" + password + '\'' +
-                '}';
-    }
 }
