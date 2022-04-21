@@ -6,6 +6,7 @@ import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
+import java.util.Collection;
 import java.util.List;
 
 
@@ -23,6 +24,15 @@ public class User {
     @Field(value = "password")
     private String password;
     @DBRef
-    private House house;
+    private Collection<House> houses;
 
+    @Override
+    public String toString() {
+        return "User{" +
+                "id='" + id + '\'' +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", houses=" + houses +
+                '}';
+    }
 }
