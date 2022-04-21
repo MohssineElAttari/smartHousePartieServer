@@ -18,13 +18,18 @@ public class Device {
     private String name;
     private String number;
     private DeviceStatus status;
+
     @DBRef
     private Room room;
 
-    public Device(String name,String number,DeviceStatus status){
-        this.name=name;
-        this.number=number;
-        this.status=status;
+    @Override
+    public String toString() {
+        return "Device{" +
+                "id='" + id + '\'' +
+                ", name='" + name + '\'' +
+                ", number='" + number + '\'' +
+                ", status=" + status +
+                ", room=" + room +
+                '}';
     }
-
 }
