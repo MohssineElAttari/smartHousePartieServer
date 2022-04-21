@@ -22,4 +22,13 @@ public class Floor {
     @DBRef
     private House house;
 
+    @Override
+    public String toString() {
+        return "Floor{" +
+                "id='" + id + '\'' +
+                ", number=" + number +
+                ", rooms=" + rooms +
+                ", house=" + house +
+                '}';
+    }
 }
