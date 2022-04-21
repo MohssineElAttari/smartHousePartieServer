@@ -7,6 +7,8 @@ import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
+import java.util.Collection;
+
 @Document(collection = "house_collection")
 @Getter
 @Setter
@@ -28,11 +30,7 @@ public class House {
         return "House{" +
                 "id='" + id + '\'' +
                 ", name='" + name + '\'' +
+                ", user=" + user +
                 '}';
-    }
-
-    public House(String name,User user) {
-        this.name = name;
-        this.user=user;
     }
 }
