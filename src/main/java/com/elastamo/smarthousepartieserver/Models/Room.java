@@ -21,4 +21,14 @@ public class Room {
     private Floor floor;
     @DBRef
     private Collection<Device> devices;
+
+    @Override
+    public String toString() {
+        return "Room{" +
+                "id='" + id + '\'' +
+                ", number=" + number +
+                ", floor=" + floor +
+                ", devices=" + devices +
+                '}';
+    }
 }
