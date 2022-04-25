@@ -17,11 +17,8 @@ public class HouseController {
     public HouseController(HouseServiceImp houseServiceImp){
         this.service=houseServiceImp;
     }
+
     @GetMapping
-    public String welcome(){
-            return "test heroku";
-    }
-    @GetMapping("/getAll")
     public List<House> getAllHouse(){
         return this.service.getAll();
     }
