@@ -10,7 +10,9 @@ public interface IUserService {
     public User addUser(User user);
     public User update(User user);
     public String delete(String id);
-    public User FindById(String id);
+
+    User findById(String id);
+
     public List<User> getAll();
 
 }

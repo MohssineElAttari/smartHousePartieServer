@@ -24,7 +24,8 @@ public class HouseController {
     }
 
     @PostMapping("/add")
-    public House addHouse(RequestBody house ){
-        return this.addHouse(house);
+    public House addHouse(@RequestBody House house){
+        System.out.println("yap ===================>"+house);
+        return this.service.addHouse(house);
     }
 }
