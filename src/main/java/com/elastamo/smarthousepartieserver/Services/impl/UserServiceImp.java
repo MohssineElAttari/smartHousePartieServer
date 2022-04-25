@@ -1,12 +1,13 @@
-package com.elastamo.smarthousepartieserver.Services;
+package com.elastamo.smarthousepartieserver.Services.impl;
 
 import com.elastamo.smarthousepartieserver.Models.User;
 import com.elastamo.smarthousepartieserver.Repository.UserRepository;
+import com.elastamo.smarthousepartieserver.Services.interfaceService.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
 
-public class UserServiceImp implements IUserService{
+public class UserServiceImp implements IUserService {
 
     private UserRepository userRepository;
 

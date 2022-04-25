@@ -1,7 +1,7 @@
 package com.elastamo.smarthousepartieserver.Controllers;
 
 import com.elastamo.smarthousepartieserver.Models.House;
-import com.elastamo.smarthousepartieserver.Services.HouseServiceImp;
+import com.elastamo.smarthousepartieserver.Services.impl.HouseServiceImp;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,7 +17,10 @@ public class HouseController {
     public HouseController(HouseServiceImp houseServiceImp){
         this.service=houseServiceImp;
     }
-
+    @GetMapping
+    public String welcome(){
+            return "test heroku";
+    }
     @GetMapping("/getAll")
     public List<House> getAllHouse(){
         return this.service.getAll();

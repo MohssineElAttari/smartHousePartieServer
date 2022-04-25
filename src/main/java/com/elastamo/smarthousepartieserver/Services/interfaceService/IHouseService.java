@@ -1,4 +1,4 @@
-package com.elastamo.smarthousepartieserver.Services;
+package com.elastamo.smarthousepartieserver.Services.interfaceService;
 
 import com.elastamo.smarthousepartieserver.Models.House;
 
