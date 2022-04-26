@@ -27,18 +27,17 @@ public class HouseServiceImp implements IHouseService {
     @Override
     public House addHouse(House house) {
 
-        User getUserData = userServiceImp.findById(house.getUser().getId());
+        User userData = userServiceImp.findById(house.getUser().getId());
 
-        if(getUserData == null) {
+        if(userData == null) {
             User user = house.getUser();
-//            user.setHouses((Collection<House>) house);
             this.userServiceImp.addUser(user);
-
         }
 
-        getUserData = userServiceImp.findById(house.getUser().getId());
-        if(getUserData != null){
-            house.setUser(getUserData);
+        userData = userServiceImp.findById(house.getUser().getId());
+
+        if(userData != null){
+            house.setUser(userData);
             houseRepository.save(house);
         }
         return house;
@@ -66,9 +65,9 @@ public class HouseServiceImp implements IHouseService {
     }
 
     @Override
-    public House update(House house, String id) {
-        House device1 = houseRepository.findById(house.getId()).orElse(null);
-        if(device1 != null){
+    public House update(House house) {
+        House houseUp = houseRepository.findById(house.getId()).orElse(null);
+        if(houseUp != null){
             return houseRepository.save(house);
         }
         return null;
