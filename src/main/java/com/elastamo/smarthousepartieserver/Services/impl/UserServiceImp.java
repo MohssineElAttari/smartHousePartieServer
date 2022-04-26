@@ -1,5 +1,6 @@
 package com.elastamo.smarthousepartieserver.Services.impl;
 
+import com.elastamo.smarthousepartieserver.Models.House;
 import com.elastamo.smarthousepartieserver.Models.User;
 import com.elastamo.smarthousepartieserver.Repository.UserRepository;
 import com.elastamo.smarthousepartieserver.Services.interfaceService.IUserService;
@@ -20,12 +21,17 @@ public class UserServiceImp implements IUserService {
 
     @Override
     public User addUser(User user) {
+
         return this.userRepository.save(user);
     }
 
     @Override
     public User update(User user) {
-        return this.userRepository.save(user);
+        User userUp = userRepository.findById(user.getId()).orElse(null);
+        if(userUp != null){
+            return userRepository.save(user);
+        }
+        return null;
     }
 
     @Override
@@ -41,9 +47,7 @@ public class UserServiceImp implements IUserService {
         }catch (Exception e){
             return null;
         }
-
     }
-
     @Override
     public List<User> getAll() {
         return this.userRepository.findAll();
