@@ -9,5 +9,5 @@ public interface IHouseService {
     List<House>getAll();
     String delete(House id);
     House findById(String is);
-    House update(House house,String id);
+    House update(House house);
 }
