@@ -21,7 +21,6 @@ public class UserServiceImp implements IUserService {
 
     @Override
     public User addUser(User user) {
-
         return this.userRepository.save(user);
     }
 

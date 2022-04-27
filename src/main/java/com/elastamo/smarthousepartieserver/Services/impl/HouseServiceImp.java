@@ -50,8 +50,8 @@ public class HouseServiceImp implements IHouseService {
     }
 
     @Override
-    public String delete(House house) {
-        houseRepository.delete(house);
+    public String delete(String id) {
+        houseRepository.deleteById(id);
         return "Deleted!";
     }
 

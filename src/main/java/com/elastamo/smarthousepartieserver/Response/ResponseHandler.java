@@ -21,9 +21,7 @@ public class ResponseHandler {
         map.put("status",status.value());
 
         map.put("data",responseObject);
-
         return new ResponseEntity<Object>(map,status);
-
     }
 
     @ResponseStatus(HttpStatus.BAD_REQUEST)

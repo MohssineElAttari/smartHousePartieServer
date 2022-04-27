@@ -7,7 +7,7 @@ import java.util.List;
 public interface IHouseService {
     House addHouse(House house);
     List<House>getAll();
-    String delete(House id);
+    String delete(String id);
     House findById(String is);
     House update(House house);
 }
