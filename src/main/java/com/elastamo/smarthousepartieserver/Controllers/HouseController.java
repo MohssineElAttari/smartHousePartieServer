@@ -15,7 +15,7 @@ import java.util.List;
 import javax.validation.Valid;
 
 @RestController
-@RequestMapping("/houses")
+@RequestMapping("/api/house")
 public class HouseController {
 
     private final HouseServiceImp service;
