@@ -22,7 +22,6 @@ public class House {
     @Field
     private String name;
 
-    @DBRef
     private User user;
 
     @Override
