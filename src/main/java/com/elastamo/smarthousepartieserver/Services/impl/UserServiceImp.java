@@ -5,8 +5,11 @@ import com.elastamo.smarthousepartieserver.Models.User;
 import com.elastamo.smarthousepartieserver.Repository.UserRepository;
 import com.elastamo.smarthousepartieserver.Services.interfaceService.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -40,6 +43,11 @@ public class UserServiceImp implements IUserService {
     }
 
     @Override
+    public User findByUsername(String username) {
+        return userRepository.findByUsername(username);
+    }
+
+    @Override
     public User findById(String id) {
         try {
             return this.userRepository.findById(id).get();
@@ -50,5 +58,14 @@ public class UserServiceImp implements IUserService {
     @Override
     public List<User> getAll() {
         return this.userRepository.findAll();
+    }
+
+    @Override
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        User user= this.findByUsername(username);
+        if (user==null){
+            throw new UsernameNotFoundException("user not found !");
+        }
+        return new org.springframework.security.core.userdetails.User(username,user.getPassword(),new ArrayList<>());
     }
 }
