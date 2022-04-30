@@ -7,6 +7,7 @@ import org.apache.coyote.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;
@@ -17,6 +18,9 @@ public class UserController {
 
     @Autowired
     private UserServiceImp userService;
+
+    @Autowired
+    private BCryptPasswordEncoder bCryptPasswordEncoder;
 
     @GetMapping
     public ResponseEntity<Object> getAll(){
@@ -36,5 +40,12 @@ public class UserController {
         }catch(Exception e){
             return ResponseHandler.generateResponse(e.getMessage(),HttpStatus.MULTI_STATUS,null);
         }
+    }
+
+    @PostMapping("/register")
+    public User register(@RequestBody User user){
+        String password = bCryptPasswordEncoder.encode(user.getPassword());
+        user.setPassword(password);
+        return userService.addUser(user);
     }
 }
