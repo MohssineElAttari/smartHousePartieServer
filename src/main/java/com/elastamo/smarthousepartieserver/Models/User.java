@@ -23,7 +23,7 @@ public class User {
     private String username;
     @Field(value = "password")
     private String password;
-    @DBRef
+    @DBRef(lazy = true)
     private Collection<House> houses;
 
     @Override
