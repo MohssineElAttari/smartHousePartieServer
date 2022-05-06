@@ -28,6 +28,7 @@ public class HouseController {
     @GetMapping
     public ResponseEntity<Object> getAllHouse(){
         try {
+            //get all House
             Collection<House> houses=service.getAll();
             return ResponseHandler.generateResponse("Successfuly get all data!",HttpStatus.OK,houses);
         }catch (Exception e){
@@ -38,6 +39,7 @@ public class HouseController {
     @PostMapping("/add")
     public ResponseEntity<Object> addHouse(@Valid @RequestBody House house){
         try {
+            //add new hosue
             House house1 = service.addHouse(house);
             return ResponseHandler.generateResponse("Successfully added House data!",HttpStatus.OK,house1);
         }catch (Exception e){
@@ -48,6 +50,7 @@ public class HouseController {
     @DeleteMapping("/delete")
     public ResponseEntity<Object> deleteHouse(@RequestParam(name="id") String id){
         try {
+            // delete house
             service.delete(id);
             return ResponseHandler.generateResponse("Successfully deleted house data!",HttpStatus.OK,true);
         }catch (Exception e){
