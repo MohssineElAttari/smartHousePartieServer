@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import java.util.HashMap;
 import java.util.Map;
 
+
+//This class will later be used to generate responses, where the response will be received in the form of an object with 3 parameters/values ​​in it.
 public class ResponseHandler {
     public static ResponseEntity<Object> generateResponse(String message , HttpStatus status, Object responseObject){
 
@@ -22,19 +24,5 @@ public class ResponseHandler {
 
         map.put("data",responseObject);
         return new ResponseEntity<Object>(map,status);
-    }
-
-    @ResponseStatus(HttpStatus.BAD_REQUEST)
-    @ExceptionHandler(MethodArgumentNotValidException.class)
-    public static ResponseEntity<Object> handleValidationExceptions(
-            MethodArgumentNotValidException ex) {
-
-        Map<String, String> errors = new HashMap<>();
-        ex.getBindingResult().getAllErrors().forEach((error) -> {
-            String fieldName = ((FieldError) error).getField();
-            String errorMessage = error.getDefaultMessage();
-            errors.put(fieldName, errorMessage);
-        });
-        return new ResponseEntity<Object>(errors, null);
     }
 }
