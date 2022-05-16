@@ -1,14 +1,12 @@
-package com.elastamo.smarthousepartieserver.Services.impl;
+package com.elastamo.smarthousepartieserver.Services.Implements;
 
 import com.elastamo.smarthousepartieserver.Models.House;
 import com.elastamo.smarthousepartieserver.Models.User;
 import com.elastamo.smarthousepartieserver.Repository.HouseRepository;
-import com.elastamo.smarthousepartieserver.Services.interfaceService.IHouseService;
-import com.elastamo.smarthousepartieserver.Services.interfaceService.IUserService;
+import com.elastamo.smarthousepartieserver.Services.Interfaces.IHouseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Collection;
 import java.util.List;
 
 @Service
@@ -45,7 +43,6 @@ public class HouseServiceImp implements IHouseService {
 
     @Override
     public List<House> getAll() {
-
         return houseRepository.findAll();
     }
 
@@ -71,5 +68,20 @@ public class HouseServiceImp implements IHouseService {
             return houseRepository.save(house);
         }
         return null;
+    }
+
+    @Override
+    public int countHouse() {
+        return houseRepository.countHouse();
+    }
+
+    @Override
+    public int countHouseByUser(String id) {
+        return houseRepository.countByUser(id);
+    }
+
+    @Override
+    public House findHouseByNameAndUserName(String name, String userName) {
+        return houseRepository.findHouseByNameAndUser_Username(name,userName);
     }
 }

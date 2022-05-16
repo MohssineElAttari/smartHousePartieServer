@@ -1,4 +1,4 @@
-package com.elastamo.smarthousepartieserver.Services.interfaceService;
+package com.elastamo.smarthousepartieserver.Services.Interfaces;
 
 import com.elastamo.smarthousepartieserver.Models.House;
 
@@ -10,4 +10,8 @@ public interface IHouseService {
     String delete(String id);
     House findById(String is);
     House update(House house);
+    int countHouse();
+    int countHouseByUser(String id);
+    House findHouseByNameAndUserName(String name,String userName);
+
 }

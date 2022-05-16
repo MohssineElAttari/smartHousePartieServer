@@ -1,10 +1,8 @@
-package com.elastamo.smarthousepartieserver.Services.impl;
+package com.elastamo.smarthousepartieserver.Services.Implements;
 
-import com.elastamo.smarthousepartieserver.Models.House;
 import com.elastamo.smarthousepartieserver.Models.User;
 import com.elastamo.smarthousepartieserver.Repository.UserRepository;
-import com.elastamo.smarthousepartieserver.Services.interfaceService.IUserService;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.elastamo.smarthousepartieserver.Services.Interfaces.IUserService;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
@@ -15,9 +13,9 @@ import java.util.List;
 @Service
 public class UserServiceImp implements IUserService {
 
+//    @Autowired
     private UserRepository userRepository;
 
-    @Autowired
     public UserServiceImp(UserRepository userRepository){
         this.userRepository=userRepository;
     }
@@ -28,7 +26,7 @@ public class UserServiceImp implements IUserService {
     }
 
     @Override
-    public User update(User user) {
+    public User updateUser(User user) {
         User userUp = userRepository.findById(user.getId()).orElse(null);
         if(userUp != null){
             return userRepository.save(user);
@@ -37,9 +35,8 @@ public class UserServiceImp implements IUserService {
     }
 
     @Override
-    public String delete(String id) {
+    public void deleteUser(String id) {
         this.userRepository.deleteById(id);
-        return "deleted";
     }
 
     @Override
@@ -49,15 +46,21 @@ public class UserServiceImp implements IUserService {
 
     @Override
     public User findById(String id) {
-        try {
-            return this.userRepository.findById(id).get();
-        }catch (Exception e){
-            return null;
-        }
+
+            User existUser = this.userRepository.findById(id).orElse(null);
+            if (existUser!=null){
+                return this.userRepository.findById(id).get();
+            }
+            return existUser;
     }
     @Override
     public List<User> getAll() {
         return this.userRepository.findAll();
+    }
+
+    @Override
+    public int countUsers() {
+        return userRepository.getCountUsers();
     }
 
     @Override

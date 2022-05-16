@@ -2,8 +2,7 @@ package com.elastamo.smarthousepartieserver.Controllers;
 
 import com.elastamo.smarthousepartieserver.Models.House;
 import com.elastamo.smarthousepartieserver.Response.ResponseHandler;
-import com.elastamo.smarthousepartieserver.Services.impl.HouseServiceImp;
-import org.apache.coyote.Response;
+import com.elastamo.smarthousepartieserver.Services.Implements.HouseServiceImp;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -11,7 +10,6 @@ import org.springframework.web.bind.annotation.*;
 
 
 import java.util.Collection;
-import java.util.List;
 import javax.validation.Valid;
 
 @RestController
@@ -25,12 +23,12 @@ public class HouseController {
         this.service=houseServiceImp;
     }
 
-    @GetMapping
+    @GetMapping("/all")
     public ResponseEntity<Object> getAllHouse(){
         try {
             //get all House
-            Collection<House> houses=service.getAll();
-            return ResponseHandler.generateResponse("Successfuly get all data!",HttpStatus.OK,houses);
+            Collection<House> result=service.getAll();
+            return ResponseHandler.generateResponse("Successfuly get all data!",HttpStatus.OK,result);
         }catch (Exception e){
             return ResponseHandler.generateResponse(e.getMessage(),HttpStatus.MULTI_STATUS,null);
         }
@@ -40,8 +38,8 @@ public class HouseController {
     public ResponseEntity<Object> addHouse(@Valid @RequestBody House house){
         try {
             //add new hosue
-            House house1 = service.addHouse(house);
-            return ResponseHandler.generateResponse("Successfully added House data!",HttpStatus.OK,house1);
+            House result = service.addHouse(house);
+            return ResponseHandler.generateResponse("Successfully added House data!",HttpStatus.OK,result);
         }catch (Exception e){
             return ResponseHandler.generateResponse(e.getMessage(), HttpStatus.NOT_FOUND,null);
         }
@@ -51,8 +49,8 @@ public class HouseController {
     public ResponseEntity<Object> deleteHouse(@RequestParam(name="id") String id){
         try {
             // delete house
-            service.delete(id);
-            return ResponseHandler.generateResponse("Successfully deleted house data!",HttpStatus.OK,true);
+            String result=service.delete(id);
+            return ResponseHandler.generateResponse("Successfully deleted house data!",HttpStatus.OK,result);
         }catch (Exception e){
         return ResponseHandler.generateResponse(e.getMessage(),HttpStatus.MULTI_STATUS,null);
         }
@@ -61,10 +59,39 @@ public class HouseController {
     @PutMapping("/update")
     public ResponseEntity<Object> update(@RequestBody House house){
         try {
-            House house1 = service.update(house);
-            return ResponseHandler.generateResponse("Successfully update house data!",HttpStatus.OK,house);
+            House result = service.update(house);
+            return ResponseHandler.generateResponse("Successfully update house data!",HttpStatus.OK,result);
         }catch (Exception e){
             return ResponseHandler.generateResponse(e.getMessage(),HttpStatus.MULTI_STATUS,null);
         }
     }
+
+    @GetMapping("/count")
+    public ResponseEntity<Object> countHouse(){
+        try {
+            int result = service.countHouse();
+            return ResponseHandler.generateResponse("Successfully get count house data!",HttpStatus.OK,result);
+        }catch(Exception e){
+            return ResponseHandler.generateResponse(e.getMessage(), HttpStatus.OK,null);
+        }
+    }
+    @GetMapping("/count/{idUser}")
+    public ResponseEntity<Object> countHouseByUser(@PathVariable String idUser){
+        try {
+            int result = service.countHouseByUser(idUser);
+            return ResponseHandler.generateResponse("Successfully get count house data By User!",HttpStatus.OK,result);
+        }catch(Exception e){
+            return ResponseHandler.generateResponse(e.getMessage(), HttpStatus.OK,null);
+        }
+    }
+    @GetMapping("/count/{idUser}")
+    public ResponseEntity<Object> finfHouseByNameAndUserName(@PathVariable String name,@PathVariable String userName){
+        try {
+            House result = service.findHouseByNameAndUserName(name,userName);
+            return ResponseHandler.generateResponse("Successfully find house data By name and userName!",HttpStatus.OK,result);
+        }catch(Exception e){
+            return ResponseHandler.generateResponse(e.getMessage(), HttpStatus.OK,null);
+        }
+    }
+
 }
