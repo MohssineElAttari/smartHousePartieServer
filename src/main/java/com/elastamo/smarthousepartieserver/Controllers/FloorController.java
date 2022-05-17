@@ -99,7 +99,6 @@ public class FloorController {
             return ResponseHandler.generateResponse("Succsefuly get cout floor by house data !",HttpStatus.OK,countByHouse);
         }catch(Exception e){
             return ResponseHandler.generateResponse(e.getMessage(),HttpStatus.MULTI_STATUS,null);
-
         }
     }
 }
