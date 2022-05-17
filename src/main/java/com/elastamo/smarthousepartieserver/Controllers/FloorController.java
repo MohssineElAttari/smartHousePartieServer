@@ -3,6 +3,7 @@ package com.elastamo.smarthousepartieserver.Controllers;
 import com.elastamo.smarthousepartieserver.Models.Floor;
 import com.elastamo.smarthousepartieserver.Response.ResponseHandler;
 import com.elastamo.smarthousepartieserver.Services.Implements.FloorServiceImp;
+import lombok.RequiredArgsConstructor;
 import org.apache.coyote.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -12,11 +13,11 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/room")
+@RequestMapping("/api/floor")
+@RequiredArgsConstructor
 public class FloorController {
 
-    @Autowired
-    private FloorServiceImp floorServiceImp;
+    private final FloorServiceImp floorServiceImp;
 
     @GetMapping
     public ResponseEntity<Object> getAll(){

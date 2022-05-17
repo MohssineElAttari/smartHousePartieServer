@@ -3,6 +3,7 @@ package com.elastamo.smarthousepartieserver.Controllers;
 import com.elastamo.smarthousepartieserver.Models.House;
 import com.elastamo.smarthousepartieserver.Response.ResponseHandler;
 import com.elastamo.smarthousepartieserver.Services.Implements.HouseServiceImp;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,14 +15,10 @@ import javax.validation.Valid;
 
 @RestController
 @RequestMapping("/api/house")
+@RequiredArgsConstructor
 public class HouseController {
 
     private final HouseServiceImp service;
-
-    @Autowired
-    public HouseController(HouseServiceImp houseServiceImp){
-        this.service=houseServiceImp;
-    }
 
     @GetMapping("/all")
     public ResponseEntity<Object> getAllHouse(){
@@ -84,8 +81,8 @@ public class HouseController {
             return ResponseHandler.generateResponse(e.getMessage(), HttpStatus.OK,null);
         }
     }
-    @GetMapping("/count/{idUser}")
-    public ResponseEntity<Object> finfHouseByNameAndUserName(@PathVariable String name,@PathVariable String userName){
+    @GetMapping("/count/{username}/{name}")
+    public ResponseEntity<Object> findHouseByNameAndUserName(@PathVariable(name = "name") String name,@PathVariable(name = "username") String userName){
         try {
             House result = service.findHouseByNameAndUserName(name,userName);
             return ResponseHandler.generateResponse("Successfully find house data By name and userName!",HttpStatus.OK,result);

@@ -3,6 +3,7 @@ package com.elastamo.smarthousepartieserver.Controllers;
 import com.elastamo.smarthousepartieserver.Models.Room;
 import com.elastamo.smarthousepartieserver.Response.ResponseHandler;
 import com.elastamo.smarthousepartieserver.Services.Implements.RoomServiceImp;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -11,12 +12,10 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/room")
+@RequiredArgsConstructor
 public class RoomController {
 
-    private RoomServiceImp roomServiceImp;
-    public RoomController(RoomServiceImp roomServiceImp){
-        this.roomServiceImp=roomServiceImp;
-    }
+    private final RoomServiceImp roomServiceImp;
 
     @GetMapping
     public ResponseEntity<Object> getAll(){
