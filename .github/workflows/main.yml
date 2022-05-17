@@ -24,7 +24,7 @@ jobs:
       - uses: mr-smithers-excellent/docker-build-push@v5
         name: Build & push Docker image
         with:
-          image: elastamo/smarthouseelsatmoi
+          image: smarthouseelsatmoi/pfe
           tags: latest
           registry: docker.io
           dockerfile: Dockerfile
