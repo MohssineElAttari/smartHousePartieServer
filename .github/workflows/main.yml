@@ -19,9 +19,6 @@ jobs:
           java-version: 17
 
 
-      - name: Run Tests
-        run: mvn -B test
-
       - name: Build project with Maven
         run: mvn -B package --file pom.xml
       - uses: mr-smithers-excellent/docker-build-push@v5
