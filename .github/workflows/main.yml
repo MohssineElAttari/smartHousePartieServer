@@ -22,9 +22,9 @@ jobs:
       - name: Build project with Maven
         run: mvn -B package --file pom.xml
       - uses: mr-smithers-excellent/docker-build-push@v5
-        name: Build & push Docker image
-        with:
-          image: target/smart_house.jar
+#        name: Build & push Docker image
+#        with:
+#          image: target/smart_house.jar
 #          tags: latest
 #          registry: docker.io
 #          dockerfile: Dockerfile
