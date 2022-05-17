@@ -18,7 +18,7 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 
 @ExtendWith(MockitoExtension.class)
-@RunWith(MockitoJUnitRunner.class)
+@RunWith(MockitoJUnitRunner.Silent.class)
 class UserRepositoryTest {
 
     @Mock
@@ -32,9 +32,9 @@ class UserRepositoryTest {
 
     @BeforeEach
     void setUp() {
-        user=new User("1","elastamo","12345678");
-        user1=new User("2","pikatsho","87654321");
-        user2=new User("3","makhito","12348765");
+        user=new User("1","elastamo","12345678",null);
+        user1=new User("2","pikatsho","87654321",null);
+        user2=new User("3","makhito","12348765",null);
     }
 
     @AfterEach
@@ -45,8 +45,8 @@ class UserRepositoryTest {
     void findByUsername() {
         Mockito.lenient().when(userRepository.findByUsername("elastamo")).thenReturn(user);
         System.out.println(user);
-        assertEquals(userRepository.findByUsername("Mohssine@gmail.com"),user);
-        assertNotNull(userRepository.findByUsername("Mohssine@gmail.com"));
+        assertEquals(userRepository.findByUsername("elastamo"),user);
+        assertNotNull(userRepository.findByUsername("elastamo"));
     }
 
     @Test

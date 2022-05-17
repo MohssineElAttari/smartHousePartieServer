@@ -10,7 +10,7 @@ import java.util.List;
 public interface IUserService extends UserDetailsService {
     User addUser(User user);
     User updateUser(User user);
-    void deleteUser(String id);
+    String deleteUser(String id);
     User findByUsername(String username);
     User findById(String id);
     List<User> getAll();

@@ -1,10 +1,8 @@
 package com.elastamo.smarthousepartieserver.Services.Implements;
 
-import com.elastamo.smarthousepartieserver.Models.House;
 import com.elastamo.smarthousepartieserver.Models.Room;
 import com.elastamo.smarthousepartieserver.Repository.RoomRepository;
 import com.elastamo.smarthousepartieserver.Services.Interfaces.IRoomService;
-import jdk.jfr.internal.Repository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

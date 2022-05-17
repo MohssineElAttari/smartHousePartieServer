@@ -35,8 +35,9 @@ public class UserServiceImp implements IUserService {
     }
 
     @Override
-    public void deleteUser(String id) {
-        this.userRepository.deleteById(id);
+    public String deleteUser(String id) {
+        this.userRepository.delete(userRepository.findById(id).get());
+        return "deleted!";
     }
 
     @Override

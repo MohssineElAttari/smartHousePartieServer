@@ -15,6 +15,7 @@ import java.util.List;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 public class User {
 
     @Id
@@ -25,6 +26,17 @@ public class User {
     private String password;
     @DBRef(lazy = true)
     private Collection<House> houses;
+
+    public User(String username, String password) {
+        this.username=username;
+        this.password=password;
+    }
+
+    public User(String id,String username, String password) {
+        this.username=username;
+        this.password=password;
+        this.id=id;
+    }
 
     @Override
     public String toString() {
