@@ -55,8 +55,7 @@ public class UserController {
 
     @PutMapping("/update")
     public ResponseEntity<Object> updateUser(@RequestBody User user){
-        try{
-            User existUser= userService.findById(user.getId());
+        try{User existUser= userService.findById(user.getId());
             if (existUser!=null){
                 User result= userService.updateUser(user);
                 return ResponseHandler.generateResponse("Successfully Update User : "+user.getUsername(),HttpStatus.OK,result);
